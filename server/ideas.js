@@ -1,10 +1,11 @@
 const express = require('express');
 const { getAllFromDatabase, getFromDatabaseById, addToDatabase, updateInstanceInDatabase, deleteFromDatabasebyId } = require('./db');
+
 const checkMillionDollarIdea = require('./checkMillionDollarIdea');
 
 const ideasRouter = express.Router();
 
-ideasRouter.param('minionId',  (req, res, next, id) => {
+ideasRouter.param('ideaId',  (req, res, next, id) => {
   const idea = getFromDatabaseById('ideas', id);
   if (idea) {
     req.idea = idea;
